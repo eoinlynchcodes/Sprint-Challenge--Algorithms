@@ -5,17 +5,17 @@
 a)
 
 If this code runs just once it is fine. There is no mention of either iteration or recursion. 
-There is only one line of simple code after the while loop and there are only two variables. I would say it is either Constant O(1) or Logarithmic O(log n)
+There is only one line of simple code after the while loop and there are only two variables. Linear.
 
 b)
 
 A main source of inefficiency here is the for loop. The conditional while statement slows things down but only marginally. 
-I would say this is Polynomial O(n^c)
+I would say this is Linearithmic O(n log n)
 
 
 c)
 
-This is Exponential O(c^n)
+This is Linear O(n)
 
 ## Exercise II
 

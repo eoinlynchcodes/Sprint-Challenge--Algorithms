@@ -14,22 +14,14 @@ class SortingRobot:
         Returns True if the robot can move right or False if it's
         at the end of the list.
         """
-        if self._position < len(self._list) - 1:
-            return True
-
-        elif self._position == len(self._list):
-            return False
+        return self._position < len(self._list) - 1
 
     def can_move_left(self):
         """
         Returns True if the robot can move left or False if it's
         at the start of the list.
         """
-        if self._position > 0:
-            return True
-        
-        elif self._position == 0:
-            return False
+        return self._position > 0
 
     def move_right(self):
         """
@@ -104,14 +96,20 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
-        # return self._list.sort()
-        swapped = True
-        while swapped:
-            swapped = False
-            for i in range(len(self._list) - 1):
-                if self._list[i] > self._list[i + 1]:
-                    self._list[i], self._list[i + 1] = self._list[i + 1], self._list[i]
-                    swapped = True
+        self.set_light_on()
+        while self.light_is_on():
+            self.swap_item()
+            while self.can_move_right():
+                self.move_right()
+                if self.compare_item() == 1:
+                    self.swap_item()
+            while self.can_move_left() == True and self.compare_item() is not None:
+                self.move_left()
+            self.swap_item()
+            if self.can_move_right() is not True:
+                self.set_light_off()
+            else:
+                self.move_right()
 
 
 if __name__ == "__main__":
